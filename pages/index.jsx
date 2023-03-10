@@ -1,3 +1,5 @@
+import Navbar from '../src/components/layout/Navbar'
+
 export default function HomePage() {
-  return <h1>ola</h1>
+  return <Navbar />
 }
