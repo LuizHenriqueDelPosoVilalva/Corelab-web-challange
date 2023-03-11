@@ -1,21 +1,13 @@
-import styled from 'styled-components'
-
 import Navbar from '../src/components/layout/Navbar'
 import CreatedPost from '../src/components/inputs/CreatedPost'
-
-const StyledContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-`
+import Container from '../src/components/layout/Container'
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
-      <StyledContainer>
-        <CreatedPost />
-      </StyledContainer>
+      <CreatedPost />
+      <Container>ola</Container>
     </>
   )
 }

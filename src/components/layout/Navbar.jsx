@@ -22,6 +22,10 @@ const Icon = styled.div`
   background-image: url('/image 8.png');
   width: 36.31px;
   height: 36.31px;
+
+  @media (max-width: 390px) {
+    display: none;
+  }
 `
 
 const StyledTitle = styled.span`
@@ -35,6 +39,17 @@ const StyledInput = styled.input`
   border-radius: 3px;
   padding: 0 10px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  @media (max-width: 730px) {
+    width: 300px;
+  }
+
+  @media (max-width: 500px) {
+    width: 200px;
+  }
+`
+
+const Input = styled.div`
+  display: flex;
 `
 
 function Navbar() {
@@ -46,9 +61,9 @@ function Navbar() {
           <StyledTitle>CoreNotes</StyledTitle>
         </H4>
       </StyledContent>
-      <div>
+      <Input>
         <StyledInput placeholder="Pesquisar notas" />
-      </div>
+      </Input>
     </StyledNavbar>
   )
 }
