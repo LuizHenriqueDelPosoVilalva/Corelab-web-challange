@@ -28,7 +28,7 @@ const Icon = styled.div`
   }
 `
 
-const StyledTitle = styled.span`
+const StyledTitle = styled(H4)`
   color: ${(props) => props.theme.gray};
 `
 
@@ -57,9 +57,7 @@ function Navbar() {
     <StyledNavbar>
       <StyledContent>
         <Icon />
-        <H4>
-          <StyledTitle>CoreNotes</StyledTitle>
-        </H4>
+        <StyledTitle>CoreNotes</StyledTitle>
       </StyledContent>
       <Input>
         <StyledInput placeholder="Pesquisar notas" />

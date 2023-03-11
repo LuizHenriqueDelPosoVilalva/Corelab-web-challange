@@ -11,7 +11,6 @@ const StyledContainer = styled.div`
 const StyledChildren = styled.div`
   max-width: 1100px;
   width: 100%;
-  background-color: red;
 `
 
 function Container({ children }) {
