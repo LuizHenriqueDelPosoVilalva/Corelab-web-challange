@@ -15,6 +15,12 @@ const PostContainer = styled.div`
   justify-content: space-between;
   gap: 30px;
   margin-bottom: 30px;
+
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export default function HomePage() {
