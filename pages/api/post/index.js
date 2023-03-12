@@ -1,8 +1,10 @@
+import connect from 'next-connect'
+
 import { createPost } from '../../../modules/post/post.service'
 
-function post(req, res) {
-  createPost()
+const post = connect().post((req, res) => {
+  createPost(req.body)
   res.status(200).json({ teste: true })
-}
+})
 
 export default post
