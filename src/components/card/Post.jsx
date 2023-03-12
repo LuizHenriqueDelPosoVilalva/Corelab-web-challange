@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-import InputTitle from '../inputs/InputTitle'
-import Textarea from '../inputs/Textarea'
+import H4 from '../typhograhy/H4'
 
 const StyledContainer = styled.div`
   width: 390px;
@@ -14,15 +13,33 @@ const StyledContainer = styled.div`
     width: 250px;
   }
 `
-const StyledInputTitle = styled(InputTitle)`
-  border-radius: 25px 25px 0 0;
+
+const StyledTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-bottom: 1px solid ${(props) => props.theme.border};
+`
+
+const Text = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const StyledText = styled.div`
+  font-size: 13px;
+  padding: 10px;
 `
 
 function Post() {
   return (
     <StyledContainer>
-      <StyledInputTitle placeholder="Título" />
-      <Textarea placeholder="Sua tarefa" />
+      <StyledTitle>
+        <H4>Título</H4>
+      </StyledTitle>
+      <Text>
+        <StyledText>Tarefa</StyledText>
+      </Text>
     </StyledContainer>
   )
 }

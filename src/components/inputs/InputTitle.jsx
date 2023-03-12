@@ -6,7 +6,7 @@ const InputTitle = styled.input`
   font-weight: 700;
   width: 100%;
   border: none;
-  border-radius: 3px;
+  border-radius: 3px 3px 0 0;
   border-bottom: 1px solid ${(props) => props.theme.border};
   padding: 10px;
   box-sizing: border-box;
