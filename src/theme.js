@@ -3,7 +3,8 @@ const theme = {
   white: '#FFFFFF',
   gray: '#4F4F4D',
   black: '#333333',
-  border: '#D9D9D9'
+  border: '#D9D9D9',
+  error: 'red'
 }
 
 export default theme

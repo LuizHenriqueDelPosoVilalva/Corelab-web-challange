@@ -4,8 +4,9 @@ import { joiResolver } from '@hookform/resolvers/joi'
 
 import { createPostSchema } from '../../../modules/post/post.schema'
 
-import InputTitle from '../inputs/InputTitle'
-import Textarea from '../inputs/Textarea'
+import Text from '../inputs/Textarea'
+import Title from '../inputs/InputTitle'
+import Button from '../button/Button'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -39,13 +40,12 @@ const CreatedPost = () => {
     console.log(data)
   }
 
-  console.log(errors.title)
-
   return (
     <StyledContainer>
       <StyledForm onSubmit={handleSubmit(handleForm)}>
-        <InputTitle type="text" placeholder="Título" {...register('title')} />
-        <Textarea placeholder="Sua tarefa" {...register('textArea')} />
+        <Title placeholder="Título" {...register('title')} error={errors.title} />
+        <Text placeholder="Sua tarefa" {...register('textArea')} error={errors.textArea} />
+        <Button type="submit">Salvar</Button>
       </StyledForm>
     </StyledContainer>
   )
