@@ -1,14 +1,8 @@
-import Joi from 'joi'
-
 import createHandler from '../../../lib/middleware/nextConnect'
 import validate from '../../../lib/middleware/validation'
 
 import { createPost } from '../../../modules/post/post.service'
-
-const createPostSchema = Joi.object({
-  title: Joi.string().required().max(20),
-  textArea: Joi.string().required().max(100)
-})
+import { createPostSchema } from '../../../modules/post/post.schema'
 
 const posts = createHandler()
 

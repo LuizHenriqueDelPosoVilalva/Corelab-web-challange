@@ -1,4 +1,8 @@
 import styled from 'styled-components'
+import { useForm } from 'react-hook-form'
+import { joiResolver } from '@hookform/resolvers/joi'
+
+import { createPostSchema } from '../../../modules/post/post.schema'
 
 import InputTitle from '../inputs/InputTitle'
 import Textarea from '../inputs/Textarea'
@@ -23,12 +27,25 @@ const StyledForm = styled.form`
   }
 `
 
-function CreatedPost() {
+const CreatedPost = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: joiResolver(createPostSchema)
+  })
+  const handleForm = (data) => {
+    console.log(data)
+  }
+
+  console.log(errors)
+
   return (
     <StyledContainer>
-      <StyledForm>
-        <InputTitle placeholder="Título" />
-        <Textarea placeholder="Sua tarefa" />
+      <StyledForm onSubmit={handleSubmit(handleForm)}>
+        <InputTitle placeholder="Título" {...register('title')} />
+        <Textarea placeholder="Sua tarefa" maxLength="100" {...register('textArea')} />
       </StyledForm>
     </StyledContainer>
   )
