@@ -13,7 +13,7 @@ const StyledContainer = styled.div`
   }
 `
 
-const PostContainer = styled.div`
+const StyledForm = styled.form`
   background-color: ${(props) => props.theme.white};
   width: 530.17px;
   border-radius: 3px;
@@ -26,10 +26,10 @@ const PostContainer = styled.div`
 function CreatedPost() {
   return (
     <StyledContainer>
-      <PostContainer>
+      <StyledForm>
         <InputTitle placeholder="Título" />
         <Textarea placeholder="Sua tarefa" />
-      </PostContainer>
+      </StyledForm>
     </StyledContainer>
   )
 }
