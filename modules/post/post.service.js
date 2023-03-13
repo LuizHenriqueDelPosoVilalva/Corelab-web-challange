@@ -11,3 +11,7 @@ export const createPost = async (body) => {
     err
   }
 }
+
+export const getPost = async (limit = 3) => {
+  return await Post.find().sort({ createDate: -1 }).limit(limit)
+}

@@ -1,19 +1,27 @@
 import createHandler from '../../../lib/middleware/nextConnect'
 import validate from '../../../lib/middleware/validation'
 
-import { createPost } from '../../../modules/post/post.service'
+import { createPost, getPost } from '../../../modules/post/post.service'
 import { createPostSchema } from '../../../modules/post/post.schema'
 
-const posts = createHandler()
+const handle = createHandler()
 
-posts.post(validate({ body: createPostSchema }), async (req, res) => {
-  try {
-    const createdPost = await createPost(req.body)
-    res.status(201).json(createdPost)
-  } catch (err) {
-    console.error(err)
-    err
-  }
-})
+handle
+  .post(validate({ body: createPostSchema }), async (req, res) => {
+    try {
+      const newPost = await createPost(req.body)
+      res.status(201).send(newPost)
+    } catch (err) {
+      return res.status(500).send(err.message)
+    }
+  })
+  .get(async (req, res) => {
+    try {
+      const posts = await getPost(req.body)
+      res.status(200).send(posts)
+    } catch (err) {
+      return res.status(500).send(err.message)
+    }
+  })
 
-export default posts
+export default handle
