@@ -39,13 +39,13 @@ const CreatedPost = () => {
     console.log(data)
   }
 
-  console.log(errors)
+  console.log(errors.title)
 
   return (
     <StyledContainer>
       <StyledForm onSubmit={handleSubmit(handleForm)}>
-        <InputTitle placeholder="Título" {...register('title')} />
-        <Textarea placeholder="Sua tarefa" maxLength="100" {...register('textArea')} />
+        <InputTitle type="text" placeholder="Título" {...register('title')} />
+        <Textarea placeholder="Sua tarefa" {...register('textArea')} />
       </StyledForm>
     </StyledContainer>
   )
