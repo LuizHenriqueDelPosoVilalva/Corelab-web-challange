@@ -12,9 +12,14 @@ const createPostSchema = Joi.object({
 
 const posts = createHandler()
 
-posts.post(validate({ body: createPostSchema }), (req, res) => {
-  createPost(req.body)
-  res.status(200).json({ teste: true })
+posts.post(validate({ body: createPostSchema }), async (req, res) => {
+  try {
+    const createdPost = await createPost(req.body)
+    res.status(201).json(createdPost)
+  } catch (err) {
+    console.error(err)
+    err
+  }
 })
 
 export default posts
