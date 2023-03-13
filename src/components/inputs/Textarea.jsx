@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { forwardRef } from 'react'
+import { useController } from 'react-hook-form'
 
 const TextContainer = styled.div`
   width: 100%;
@@ -31,7 +31,11 @@ const ErrorLabel = styled.span`
   padding: 10px;
 `
 
-const Text = forwardRef(({ error, ...props }, ref) => {
+const Text = ({ name, control, defaultValue = '', ...props }) => {
+  const {
+    field: { value, onChange },
+    fieldState: { error }
+  } = useController({ name, control, defaultValue })
   const errorMessage = {
     'string.empty': 'Este campo é obrigatorio ',
     'string.max': 'somente de 200 caracteres'
@@ -39,10 +43,10 @@ const Text = forwardRef(({ error, ...props }, ref) => {
 
   return (
     <TextContainer>
-      <Textarea {...props} ref={ref} error={error} />
+      <Textarea {...props} error={error} value={value} onChange={onChange} />
       {error && <ErrorLabel>{errorMessage[error.type] || error.message}</ErrorLabel>}
     </TextContainer>
   )
-})
+}
 
 export default Text

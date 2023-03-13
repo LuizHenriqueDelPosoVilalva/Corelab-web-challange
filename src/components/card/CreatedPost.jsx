@@ -29,11 +29,7 @@ const StyledForm = styled.form`
 `
 
 const CreatedPost = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({
+  const { control, handleSubmit } = useForm({
     resolver: joiResolver(createPostSchema)
   })
   const handleForm = (data) => {
@@ -43,8 +39,8 @@ const CreatedPost = () => {
   return (
     <StyledContainer>
       <StyledForm onSubmit={handleSubmit(handleForm)}>
-        <Title placeholder="Título" {...register('title')} error={errors.title} />
-        <Text placeholder="Sua tarefa" {...register('textArea')} error={errors.textArea} />
+        <Title placeholder="Título" name="title" control={control} />
+        <Text placeholder="Sua tarefa" name="textArea" control={control} />
         <Button type="submit">Salvar</Button>
       </StyledForm>
     </StyledContainer>
