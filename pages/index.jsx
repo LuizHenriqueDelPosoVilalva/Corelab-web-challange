@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import useSWR from 'swr'
 
 import Navbar from '../src/components/layout/Navbar'
 import CreatedPost from '../src/components/card/CreatedPost'
@@ -25,15 +25,10 @@ const PostContainer = styled.div`
   }
 `
 
+const fetcher = (url) => axios.get(url).then((res) => res.data)
+
 export default function HomePage() {
-  const [data, setData] = useState([])
-  const handlePost = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/post`)
-    setData(response.data)
-  }
-  useEffect(() => {
-    handlePost()
-  }, [])
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/post`, fetcher)
 
   return (
     <>
@@ -43,7 +38,7 @@ export default function HomePage() {
         <Titles>Favoritos</Titles>
         <Titles>Outras</Titles>
         <PostContainer>
-          {data.map((post) => (
+          {data?.map((post) => (
             <Post key={post._id} title={post.title} textArea={post.textArea} />
           ))}
         </PostContainer>
