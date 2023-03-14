@@ -31,14 +31,14 @@ const StyledText = styled.div`
   padding: 10px;
 `
 
-function Post() {
+function Post({ title, textArea }) {
   return (
     <StyledContainer>
       <StyledTitle>
-        <H4>Título</H4>
+        <H4>{title}</H4>
       </StyledTitle>
       <Text>
-        <StyledText>Tarefa</StyledText>
+        <StyledText>{textArea}</StyledText>
       </Text>
     </StyledContainer>
   )

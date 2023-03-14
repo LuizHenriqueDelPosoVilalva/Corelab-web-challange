@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 import Navbar from '../src/components/layout/Navbar'
 import CreatedPost from '../src/components/card/CreatedPost'
@@ -24,6 +26,15 @@ const PostContainer = styled.div`
 `
 
 export default function HomePage() {
+  const [data, setData] = useState([])
+  const handlePost = async () => {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/post`)
+    setData(response.data)
+  }
+  useEffect(() => {
+    handlePost()
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -32,9 +43,9 @@ export default function HomePage() {
         <Titles>Favoritos</Titles>
         <Titles>Outras</Titles>
         <PostContainer>
-          <Post />
-          <Post />
-          <Post />
+          {data.map((post) => (
+            <Post key={post._id} title={post.title} textArea={post.textArea} />
+          ))}
         </PostContainer>
       </Container>
     </>
